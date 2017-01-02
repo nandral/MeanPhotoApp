@@ -1,0 +1,102 @@
+<div class="alert alert-danger" role="alert" ng-show="pageLoadError">{{pageLoadError}}</div>
+<!--div ng-show="!pageLoaded"> Loading data ..... </div-->
+<!-- <div ng-show="pageLoaded"> -->
+<div class="container custom_container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Filter</span>
+        <input type="text" class="form-control" placeholder="Type to search ..." aria-describedby="basic-addon1" ng-model="searchFor">
+      </div>
+    </div>
+    <div class="col-sm-6"></div>
+  </div>
+  <div style="padding-top:20px">
+    <span class="lead">Displaying {{albums.length | pluralise :{sing:'album', plur:'albums'} }}</span>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <pa-album albumdata="album" ng-repeat="album in albums | filter:{name:searchFor} | orderBy:'date' ">
+      </pa-album>
+      <!--div class="panel panel-primary album" ng-repeat="album in albums | filter:{name:searchFor} | orderBy:'date' ">
+          <div class="panel-heading">
+            <a href="#/album/{{album.name}}" style="color:white;">
+            {{album.name | uppercase}}
+            </a>
+            <div style="float:right">{{album.date}}</div>
+          </div>
+          <div class="panel-body">
+            <p>{{album.description}}</p>
+          </div>
+        </div-->
+    </div>
+  </div>
+  <div style "clear:left"></div>
+  <div controller="AddAlbumDialogController">
+    <script type="text/ng-template" id="myModalContent.html">
+      <div class="modal-header">
+        <h4>Create a New Album</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger" ng-show="add_album_error"> {{ add_album_error }} </div>
+        <form name="add_album_form" novalidate>
+          <p style="width: 100%">
+            <div class="row">
+              <div class="pull-left" style="margin-left: 15px;">
+                <input class="form-control input-sm" type="text" size="60" placeholder="Album Name..." ng-model="adding_album.name" style="width: 100%"
+                />
+              </div>
+              <div class="pull-right" style="margin-right: 15px;">
+                <input class="form-control input-sm" name="date" type="text" placeholder="yyyy/mm/dd" size="20" ng-model="adding_album.date"
+                />
+              </div>
+            </div>
+          </p>
+          <div class="description">
+            <p>
+              <textarea class="form-control input-sm" ng-model="adding_album.description" placeholder="Description..." rows="4" style="width: 100%"></textarea>
+            </p>
+            <p>
+              <input type="text" class="form-control input-sm" placeholder="Title..." size="30" ng-model="adding_album.title" />
+            </p>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button style="width: 278px;" class="btn btn-primary" ng-click="ok()">Submit</button>
+        <button style="width: 278px;" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+      </div>
+    </script>
+  </div>
+  <button style="width: 275px;" class="btn btn-success" ng-click="openAddAlbumDialog()">Create New Album</button>
+  <div style "clear:left"></div>
+  <!--<div>
+    <h3>Add New Album</h3>
+    <form name="addAlbumForm" novalidate>
+      <div class="panel panel-default album">
+        <div class="panel-heading">
+          <div class="alert alert-danger" role="alert" ng-show="addAlbumError">{{addAlbumError}}</div>
+          <div class="row">
+            <div class="pull-left" style="margin-left: 15px;">
+              <input type="text" placeholder="name ..." ng-model="newAlbum.name" size="16" class="form-control input-sm">
+            </div>
+            <div class="pull-right" style="margin-right: 15px;">
+              <input type="text" placeholder="yyyy-dd-mm" ng-model="newAlbum.date" size="12" class="form-control input-sm">
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <p>
+            <textarea rows="3" ng-model="newAlbum.description" placeholder="description ..." class="form-control"></textarea>
+          </p>
+          <p>
+            <input type="text" ng-model="newAlbum.title" placeholder="title .." class="form-control input-sm">
+          </p>
+          <p>
+            <button type="button" class="btn btn-block btn-success" ng-click="addAlbum(newAlbum)">Submit</button>
+          </p>
+        </div>
+      </div>
+    </form>
+  </div>-->
+</div>

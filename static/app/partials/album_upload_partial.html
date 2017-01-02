@@ -1,0 +1,76 @@
+<div class="container custom_container">
+  <div>
+    <ol class="breadcrumb" style="background:white">
+      <li>
+        <a href="#/"> <span>HOME</span></a>
+      </li>
+      <li>
+        <a href="#/album/{{albumName}}"> {{albumName|uppercase}} </a>
+      </li>
+      <li class="active">
+        <span><strong>ADD PHOTOS</strong></span>
+      </li>
+    </ol>
+  </div>
+  <div class="alert alert-danger" ng-show="page_load_error">{{page_load_error}}</div>
+  <h3> Add photos to album {{albumName}}</h3>
+  <div class="row" style="padding-top:20px;">
+    <div class="col-sm-12">
+      <form name="myForm">
+        <div class="col-sm-12" style="padding:20px" ng-show="picFiles.progress == 100">
+          <div class="row">
+            <div class="col-sm-4 col-xs-4">
+              <span class="progress">
+                        <div style="width:{{picFiles.progress}}%"
+                            ng-bind="picFiles.progress + '%'"></div>
+              </span>
+            </div>
+            <div class="col-sm-4 col-xs-4">
+              Uploading DONE !!
+            </div>
+            <div class="col-sm-4 col-xs-4">
+              <a href="index.html#/album/{{albumName}}">
+                <button type="button" class="btn btn-info btn-block btn-xs">Go back to album</button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row" ng-show="picFiles.progress != 100">
+          <div class="col-sm-6" style="padding-bottom:10px">
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon" id="sizing-addon3">Photo</span>
+              <input multiple type="file" class="form-control" aria-describedby="sizing-addon3" ngf-select ng-model="picFiles" name="files"
+                accept="image/*" ngf-max-size="5MB" required ngf-model-invalid="errorFile">
+              <span class="input-group-addon" id="sizing-addon3" ng-show="myForm.files.$error.required">
+                    <i ng-show="myForm.files.$error.required">*required</i>
+                    <i ng-show="myForm.files.$error.maxSize">File too large
+                              {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+            </span>
+            </div>
+          </div>
+          <div style="clear:left"></div>
+          <div class=" col-sm-6 ">
+            <button ng-disabled="!myForm.$valid " ng-click="uploadPic(picFiles) " class="btn btn-block btn-success btn-sm ">Submit</button>
+          </div>
+          <div class="col-sm-12 ">
+            <div class="panel panel-info album " ng-repeat="file in picFiles ">
+              <div class="panel-body ">
+                <img ng-show="myForm.files.$valid " ngf-thumbnail="file " class="thumb " style="padding-bottom:10px; ">
+                <div style="overflow: hidden; white-space: nowrap "><strong>Name:</strong> {{file.name }}</div>
+                <div><strong>Size:</strong> {{ file.size/1024/1024|number:2 }} Mb</div>
+                <div>
+                  <strong>Description:</strong> <br/>
+                  <input type="text " ng-model="descriptions[file.name] " style="width: 100%; border: 1px solid #ddd " />
+                </div>
+                <div style="padding-top:5px; ">
+                  <button class="btn btn-danger btn-xs btn-block " ng-click="picFiles.splice(picFiles.indexOf(file),1)
+                " ng-show="picFiles ">Remove</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+{
+  "name": "Photo App on MEAN stack",
+  "description": "This is a sample full stack javascript application developed using MEAN stack.",
+  "repository": "https://github.com/heroku/node-js-getting-started",
+  "logo": "",
+  "keywords": ["node", "express", "static"],
+  "image": "heroku/nodejs"
+}

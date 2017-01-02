@@ -1,0 +1,16 @@
+<div class="panel panel-primary album">
+  <div class="panel-heading">
+    <a href="#/album/{{albumdata.name}}" style="color:white;">
+            {{albumdata.name | uppercase}}
+            </a>
+    <div style="float:right">{{albumdata.date}}</div>
+  </div>
+  <div class="panel-body">
+    <div class="description">
+      <p>{{albumdata.description}}</p>
+    </div>{{albumdata.photos.length}}
+    <div class="thumbnail" ng-show="albumdata.photos.length" style="width:250px; max-height:200px;">
+      <img ng-src="/albums/{{albumdata.name}}/{{albumdata.photos[0].filename}}" alt="">
+    </div>
+  </div>
+</div>

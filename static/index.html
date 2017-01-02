@@ -1,0 +1,48 @@
+<html ng-app="app">
+
+<head>
+  <meta charset='UTF-8'>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AngularJS 1.X Live Lessons</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type='text/javascript' src="js/angular.min.js"></script>
+  <script type='text/javascript' src="js/angular-route.min.js"></script>
+  <script type='text/javascript' src="js/angular-file-upload.js"></script>
+  <script type='text/javascript' src="js/ng-file-upload.min.js"></script>
+  <script type='text/javascript' src="js/ui-bootstrap-tpls-0.10.0.min.js"></script>
+</head>
+
+<body>
+  <!--<div id="top_bar">
+    <a href="index.html#/">
+      <div class="glyphicon glyphicon-camera"></div>
+    </a>
+    <div id="title"> My Photo Albums </div>
+  </div>-->
+  <div class="jumbotron text-center">
+    <div class="container">
+      <h1>Photo App on MEAN Stack</h1>
+      <p>This is a sample full stack javascript application developed using MEAN stack. Angular.js 1.X is used on the front
+        end along with Bootstrap for stylesheets. On the backend Express JS is used for routing and Node JS as runtime. Mongo
+        DB is used for storing application data.</p>
+      <!--<a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-nodejs"><span class="glyphicon glyphicon-flash"></span> Getting Started with Node</a>
+      <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/node-js-getting-started"><span class="glyphicon glyphicon-download"></span> Source on GitHub</a>-->
+    </div>
+  </div>
+  <div id="content" ng-view></div>
+  <script type='text/javascript' src="app/app.js"></script>
+  <script type='text/javascript' src="app/controllers/recipelistcontroller.js"></script>
+  <script type='text/javascript' src="app/controllers/viewrecipecontroller.js"></script>
+  <script type='text/javascript' src="app/services/recipeprovider.js"></script>
+  <!-- PHOTO app imports-->
+  <script type='text/javascript' src="app/controllers/albumListController.js"></script>
+  <script type='text/javascript' src="app/services/albumService.js"></script>
+  <script type='text/javascript' src="app/controllers/albumViewController.js"></script>
+  <script type='text/javascript' src="app/controllers/albumUploadController.js"></script>
+  <script src="app/controllers/photoViewController.js"></script>
+  <script src="app/controllers/controller404.js"></script>
+</body>
+
+</html>

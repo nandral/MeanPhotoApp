@@ -1,0 +1,25 @@
+<div class="container custom_container">
+  <div>
+    <ol class="breadcrumb" style="background:white">
+      <li>
+        <a href="#/"> <span> HOME </span></a>
+      </li>
+      <li class="active">
+        <span><strong>{{albumName|uppercase}}</strong></span>
+      </li>
+    </ol>
+  </div>
+  <div class="alert alert-danger" ng-show="albumLoadError">{{albumName}} {{albumLoadError}}</div>
+  <div style="padding-bottom:20px;">
+    <a href="#/album/{{albumName}}/upload">
+      <button type="button" class="btn btn-success">Add files to this album</button>
+    </a>
+  </div>
+  <div class="photo thumbnail" ng-repeat="photo in photos" style="height:250px; width: 250px; float: left; margin-right: 10px">
+    <!--/album/:album_name/photo/:filename-->
+    <a href="index.html#/album/{{albumName}}/{{photo.filename}}">
+      <img ng-src="/albums/{{albumName}}/{{photo.filename}}" style="width: 230px; height: 200px" />
+    </a>
+    <p> {{ photo.description }} </p>
+  </div>
+</div>

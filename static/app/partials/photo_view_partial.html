@@ -1,0 +1,15 @@
+<div class="container custom_container">
+  <div>
+    <ol class="breadcrumb" style="background:white">
+      <li>
+        <a href="#/"> HOME </a>
+      </li>
+      <li>
+        <a href="#/album/{{albumName}}"> {{albumName|uppercase}} </a>
+      </li>
+      <li class="active">{{photoName}} </li>
+    </ol>
+  </div>
+  <div class="alert alert-danger" ng-show="photoLoadError">{{photoLoadError}}</div>
+  <img class="col-xs-12 col-sm-8" ng-show="!photoLoadError" ng-src='/albums/{{albumName}}/{{photoName}}' />
+</div>
