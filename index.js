@@ -76,12 +76,19 @@ app.put("/v1/recipes.json", function (req, res) {
 db.init_db(function (err) {
   if (err) {
     console.error("Error initialising DB, aborting: " + JSON.stringify(err, 0, 2));
+    console.log("Error initialising DB, aborting: " + JSON.stringify(err, 0, 2));
+
     exit(-1);
   } else {
-    console.log("Starting HTTP Server on port: " + _port);
-    app.listen(_port);
+    app.set('port', (process.env.PORT || 5000));
+
+    app.listen(app.get('port'), function () {
+      console.log('Node app is running on port', app.get('port'));
+    });
   }
 });
+
+
 
 
 
