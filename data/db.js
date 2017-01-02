@@ -4,7 +4,8 @@ var MongoClient = require('mongodb').MongoClient,
   assert = require('assert');
 
 // Connection URL
-var url = "mongodb://heroku_0mp5s9kc:nandral1234@ds149998.mlab.com:49998/heroku_0mp5s9kc";
+var url = "mongodb://heroku_2690zm94:u4n1lda8rt2gcllne84hg25ve8@ds151078.mlab.com:51078/heroku_2690zm94";
+//MONGODB_URI: mongodb://heroku_2690zm94:u4n1lda8rt2gcllne84hg25ve8@ds151078.mlab.com:51078/heroku_2690zm94
 
 var _db;
 
