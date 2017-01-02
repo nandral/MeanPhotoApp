@@ -4,13 +4,13 @@ var MongoClient = require('mongodb').MongoClient,
   assert = require('assert');
 
 // Connection URL
-var url = 'mongodb://localhost:27017/recipesapp';
+var url = "mongodb://heroku_0mp5s9kc:nandral1234@ds149998.mlab.com:49998/heroku_0mp5s9kc";
 
 var _db;
 
 
-exports.init_db = function(callback) {
-  MongoClient.connect(url, function(err, db) {
+exports.init_db = function (callback) {
+  MongoClient.connect(url, function (err, db) {
     assert.equal(null, err);
     console.log("Connected to MongoDB server.");
     _db = db;
