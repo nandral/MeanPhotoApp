@@ -1,7 +1,7 @@
 {
   "config": {
     "db_config": {
-      "host_url": "mongodb://heroku_2690zm94:u4n1lda8rt2gcllne84hg25ve8@ds151078.mlab.com:51078/heroku_2690zm94"
+      "host_url": "mongodb://localhost:27017/photosharingapp"
     },
 
     "static_content": "static/"
