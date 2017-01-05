@@ -7,7 +7,6 @@ var multiparty = require('connect-multiparty');
 var multipartyMiddleware = multiparty();
 
 
-var recipe_handler = require("./handlers/recipes.js");
 var album_hdlr = require('./handlers/albums.js');
 var helpers = require('./handlers/helpers.js');
 
@@ -31,46 +30,6 @@ app.get('/v1/albums/:album_name/photos.json', album_hdlr.photos_for_album);
 app.put('/v1/albums/:album_name/photos.json',
   multipartyMiddleware,
   album_hdlr.add_photo_to_album);
-
-
-app.get("/v1/recipes.json", function (req, res) {
-  var start = req.query.start ? parseInt(req.query.start) : 0;
-  var pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : 100;
-
-  recipe_handler.get_recipes(start, pageSize, function (err, recipes) {
-    if (err) {
-      return send_error_resp(res, err);
-    } else {
-      return send_success_resp(res, recipes);
-    }
-  });
-});
-
-app.get("/v1/recipes/:recipe_id.json", function (req, res) {
-  recipe_handler.get_recipe_by_id(req.params.recipe_id, function (err, recipe) {
-    if (err) {
-      return send_error_resp(res, err);
-    } else if (!recipe) {
-      return send_error_resp(res, 400, "no_such_recipe",
-        "That does not appear to be a valid recipe.");
-    } else {
-      send_success_resp(res, recipe);
-    }
-  });
-});
-
-app.put("/v1/recipes.json", function (req, res) {
-  recipe_handler.add_recipe(req.body, function (err, recipe) {
-    if (err) {
-      return send_error_resp(res, err);
-    } else {
-      return send_success_resp(res, recipe);
-    }
-  });
-});
-
-
-
 
 
 db.init_db(function (err) {

@@ -14,14 +14,6 @@ app.config(function ($routeProvider) {
       controller: "AlbumUploadController",
       templateUrl: "app/partials/album_upload_partial.html"
     })
-    .when("/recipes", {
-      controller: "RecipeListController",
-      templateUrl: "/app/partials/recipe_list.html"
-    })
-    .when("/recipes/:recipe_id", {
-      controller: "ViewRecipeController",
-      templateUrl: "/app/partials/view_recipe.html"
-    })
     .when("/", {
       redirectTo: "/albums"
     })
